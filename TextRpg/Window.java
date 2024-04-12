@@ -45,7 +45,7 @@ public class Window extends JFrame implements ActionListener{
       storyAreaImagePanel.setBorder(BorderFactory.createEtchedBorder());
 
       statsPanel = new JPanel();
-      statsPanel.setBounds(400, 275, 370, 30);
+      statsPanel.setBounds(430, 710, 370, 30);
       statsPanel.setBackground(Color.BLACK);
       statsPanel.setLayout(null);
 
