@@ -30,17 +30,17 @@ public class Window extends JFrame implements ActionListener{
       //panels
       storyPanel = new JPanel();
       storyPanel.setBounds(20, 20, 370, 250);
-      storyPanel.setBackground(Color.lightGray);
+      storyPanel.setBackground(Color.BLACK);
       storyPanel.setLayout(null);
 
       storyChoicePanel = new JPanel();
       storyChoicePanel.setLayout(null);
       storyChoicePanel.setBounds(20, 275, 370, 130);
-      storyChoicePanel.setBackground(Color.lightGray);
+      storyChoicePanel.setBackground(Color.BLACK);
 
       storyAreaImagePanel = new JPanel();
       storyAreaImagePanel.setBounds(400, 20, 370, 250);
-      storyAreaImagePanel.setBackground(Color.lightGray);
+      storyAreaImagePanel.setBackground(Color.BLACK);
       storyAreaImagePanel.setLayout(null);
       storyAreaImagePanel.setBorder(BorderFactory.createEtchedBorder());
 
@@ -59,7 +59,7 @@ public class Window extends JFrame implements ActionListener{
       //text area
       mainTextArea = new JTextArea();
       mainTextArea.setBounds(10, 10, 350, 230);
-      mainTextArea.setBackground(Color.DARK_GRAY);
+      mainTextArea.setBackground(Color.BLACK);
       mainTextArea.setLineWrap(true);
       mainTextArea.setText("  This is a test to see if the action listener is   working.");
       mainTextArea.setFont(new Font("Serif",Font.PLAIN,20));
@@ -68,7 +68,7 @@ public class Window extends JFrame implements ActionListener{
 
       choiceArea1 = new JTextArea();
       choiceArea1.setBounds(130, 6, 230, 20);
-      choiceArea1.setBackground(Color.DARK_GRAY);
+      choiceArea1.setBackground(Color.BLACK);
       choiceArea1.setLineWrap(true);
       choiceArea1.setText("test");
       choiceArea1.setFont(new Font("Serif",Font.PLAIN,16));
@@ -77,7 +77,7 @@ public class Window extends JFrame implements ActionListener{
 
       choiceArea2 = new JTextArea();
       choiceArea2.setBounds(130, 36, 230, 20);
-      choiceArea2.setBackground(Color.DARK_GRAY);
+      choiceArea2.setBackground(Color.BLACK);
       choiceArea2.setLineWrap(true);
       choiceArea2.setText("test");
       choiceArea2.setFont(new Font("Serif",Font.PLAIN,16));
@@ -86,7 +86,7 @@ public class Window extends JFrame implements ActionListener{
 
       choiceArea3 = new JTextArea();
       choiceArea3.setBounds(130, 66, 230, 20);
-      choiceArea3.setBackground(Color.DARK_GRAY);
+      choiceArea3.setBackground(Color.BLACK);
       choiceArea3.setLineWrap(true);
       choiceArea3.setText("test");
       choiceArea3.setFont(new Font("Serif",Font.PLAIN,16));
@@ -95,7 +95,7 @@ public class Window extends JFrame implements ActionListener{
 
       choiceArea4 = new JTextArea();
       choiceArea4.setBounds(130, 96, 230, 20);
-      choiceArea4.setBackground(Color.DARK_GRAY);
+      choiceArea4.setBackground(Color.BLACK);
       choiceArea4.setLineWrap(true);
       choiceArea4.setText("test");
       choiceArea4.setFont(new Font("Serif",Font.PLAIN,16));
