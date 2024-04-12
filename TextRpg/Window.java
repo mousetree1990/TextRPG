@@ -50,8 +50,8 @@ public class Window extends JFrame implements ActionListener{
       statsPanel.setLayout(null);
 
       equipPanel = new JPanel();
-      equipPanel.setBounds(400, 325, 370, 80);
-      equipPanel.setBackground(Color.DARK_GRAY);
+      equipPanel.setBounds(10, 500, 160, 245);
+      equipPanel.setBackground(Color.BLACK);
       equipPanel.setLayout(null);
 
 
@@ -139,8 +139,8 @@ public class Window extends JFrame implements ActionListener{
       goldStat.setEditable(false);
 
       helmetTextArea = new JTextArea();
-      helmetTextArea.setBounds(5, 0, 70, 25);
-      helmetTextArea.setBackground(Color.PINK);
+      helmetTextArea.setBounds(5, 0, 150, 25);
+      helmetTextArea.setBackground(Color.BLACK);
       helmetTextArea.setLineWrap(true);
       helmetTextArea.setText("Helmet:");
       helmetTextArea.setFont(new Font("Serif",Font.PLAIN,20));
@@ -148,16 +148,67 @@ public class Window extends JFrame implements ActionListener{
       helmetTextArea.setEditable(false);
       
       chestTextArea = new JTextArea();
-      chestTextArea.setBounds(115, 0, 70, 25);
-      chestTextArea.setBackground(Color.PINK);
+      chestTextArea.setBounds(5, 30, 150, 25);
+      chestTextArea.setBackground(Color.BLACK);
       chestTextArea.setLineWrap(true);
       chestTextArea.setText("Chest:");
       chestTextArea.setFont(new Font("Serif",Font.PLAIN,20));
       chestTextArea.setForeground(Color.WHITE);
       chestTextArea.setEditable(false);
-      
-      
-      
+
+      legsTextArea = new JTextArea();
+      legsTextArea.setBounds(5, 60, 150, 25);
+      legsTextArea.setBackground(Color.BLACK);
+      legsTextArea.setLineWrap(true);
+      legsTextArea.setText("Legs:");
+      legsTextArea.setFont(new Font("Serif",Font.PLAIN,20));
+      legsTextArea.setForeground(Color.WHITE);
+      legsTextArea.setEditable(false);
+
+      bootsTextArea = new JTextArea();
+      bootsTextArea.setBounds(5, 90, 150, 25);
+      bootsTextArea.setBackground(Color.BLACK);
+      bootsTextArea.setLineWrap(true);
+      bootsTextArea.setText("Boots:");
+      bootsTextArea.setFont(new Font("Serif",Font.PLAIN,20));
+      bootsTextArea.setForeground(Color.WHITE);
+      bootsTextArea.setEditable(false);
+
+      glovesTextArea = new JTextArea();
+      glovesTextArea.setBounds(5, 120, 150, 25);
+      glovesTextArea.setBackground(Color.BLACK);
+      glovesTextArea.setLineWrap(true);
+      glovesTextArea.setText("Gloves:");
+      glovesTextArea.setFont(new Font("Serif",Font.PLAIN,20));
+      glovesTextArea.setForeground(Color.WHITE);
+      glovesTextArea.setEditable(false);
+
+      cloakTextArea = new JTextArea();
+      cloakTextArea.setBounds(5, 150, 150, 25);
+      cloakTextArea.setBackground(Color.BLACK);
+      cloakTextArea.setLineWrap(true);
+      cloakTextArea.setText("Cloak:");
+      cloakTextArea.setFont(new Font("Serif",Font.PLAIN,20));
+      cloakTextArea.setForeground(Color.WHITE);
+      cloakTextArea.setEditable(false);
+
+      amuletTextArea = new JTextArea();
+      amuletTextArea.setBounds(5, 180, 150, 25);
+      amuletTextArea.setBackground(Color.BLACK);
+      amuletTextArea.setLineWrap(true);
+      amuletTextArea.setText("Amulet:");
+      amuletTextArea.setFont(new Font("Serif",Font.PLAIN,20));
+      amuletTextArea.setForeground(Color.WHITE);
+      amuletTextArea.setEditable(false);
+
+      weaponTextArea = new JTextArea();
+      weaponTextArea.setBounds(5, 210, 150, 25);
+      weaponTextArea.setBackground(Color.BLACK);
+      weaponTextArea.setLineWrap(true);
+      weaponTextArea.setText("Weapon:");
+      weaponTextArea.setFont(new Font("Serif",Font.PLAIN,20));
+      weaponTextArea.setForeground(Color.WHITE);
+      weaponTextArea.setEditable(false);
       
       //Buttons
       choiceButton1 = new JButton();
@@ -222,7 +273,6 @@ public class Window extends JFrame implements ActionListener{
       storyChoicePanel.add(choiceArea2);
       storyChoicePanel.add(choiceArea3);
       storyChoicePanel.add(choiceArea4);
-
       storyPanel.add(mainTextArea);
       statsPanel.add(atkStat);
       statsPanel.add(defStat);
@@ -230,6 +280,12 @@ public class Window extends JFrame implements ActionListener{
       statsPanel.add(goldStat);
       equipPanel.add(helmetTextArea);
       equipPanel.add(chestTextArea);
+      equipPanel.add(legsTextArea);
+      equipPanel.add(bootsTextArea);
+      equipPanel.add(glovesTextArea);
+      equipPanel.add(cloakTextArea);
+      equipPanel.add(amuletTextArea);
+      equipPanel.add(weaponTextArea);
 
       frame.setSize(800, 800);
       frame.getContentPane().setBackground(Color.BLACK);
