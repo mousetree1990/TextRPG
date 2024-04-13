@@ -1,31 +1,36 @@
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.*;
 
-public class Window extends JFrame implements ActionListener{
-    
-    
-    JFrame frame;
-    JButton choiceButton1, choiceButton2, choiceButton3, choiceButton4;
-    ImageIcon storyImage1, storyImage2;
-    JLabel storyImageLabel1, storyImageLabel2;
-    JPanel storyPanel, storyChoicePanel, storyAreaImagePanel, statsPanel, equipPanel;
-    JTextArea mainTextArea, choiceArea1, choiceArea2, choiceArea3, choiceArea4, atkStat, defStat, hpStat, goldStat;
-    JTextArea helmetTextArea, weaponTextArea, chestTextArea, legsTextArea, cloakTextArea, bootsTextArea, glovesTextArea , amuletTextArea;
-    
-    
+ import javax.swing.BorderFactory;
+ import javax.swing.ImageIcon;
+ import javax.swing.JButton;
+ import javax.swing.JFrame;
+ import javax.swing.JPanel;
+ import javax.swing.JTextArea;
+ import javax.swing.JLabel;
+ import java.awt.Color;
+ import java.awt.Font;
+ import java.awt.event.*;
 
-    public Window(){
 
-      
+ public class Window extends JFrame implements ActionListener{
+    
+ int Gate1 = 0;
+ int Gate2 = 0;
+ int Gate3 = 0;
+ int Gate4 = 0;
+
+   gameLogic logic;
+   JFrame frame;
+   JButton choiceButton1, choiceButton2, choiceButton3, choiceButton4;
+   ImageIcon storyImage1, storyImage2;
+   JLabel storyImageLabel1, storyImageLabel2;
+   JPanel storyPanel, storyChoicePanel, storyAreaImagePanel, statsPanel, equipPanel;
+   JTextArea mainTextArea, choiceArea1, choiceArea2, choiceArea3, choiceArea4, atkStat, defStat, hpStat, goldStat;
+   JTextArea helmetTextArea, weaponTextArea, chestTextArea, legsTextArea, cloakTextArea, bootsTextArea, glovesTextArea , amuletTextArea;
+    
+ public Window(){
+
+     logic = new gameLogic();
       
       //panels
       storyPanel = new JPanel();
@@ -37,7 +42,7 @@ public class Window extends JFrame implements ActionListener{
       storyChoicePanel.setLayout(null);
       storyChoicePanel.setBounds(20, 275, 370, 130);
       storyChoicePanel.setBackground(Color.BLACK);
-
+      
       storyAreaImagePanel = new JPanel();
       storyAreaImagePanel.setBounds(400, 20, 370, 250);
       storyAreaImagePanel.setBackground(Color.BLACK);
@@ -54,14 +59,13 @@ public class Window extends JFrame implements ActionListener{
       equipPanel.setBackground(Color.BLACK);
       equipPanel.setLayout(null);
 
-
-
       //text area
       mainTextArea = new JTextArea();
       mainTextArea.setBounds(10, 10, 350, 230);
       mainTextArea.setBackground(Color.BLACK);
       mainTextArea.setLineWrap(true);
-      mainTextArea.setText("  This is a test to see if the action listener is   working.");
+      mainTextArea.setText("Belmare!\nWoe to the coward!\n Woe to the thief!\n Woe to the lying varlet underneath!");
+      
       mainTextArea.setFont(new Font("Serif",Font.PLAIN,20));
       mainTextArea.setForeground(Color.WHITE);
       mainTextArea.setEditable(false);
@@ -70,7 +74,7 @@ public class Window extends JFrame implements ActionListener{
       choiceArea1.setBounds(130, 6, 230, 20);
       choiceArea1.setBackground(Color.BLACK);
       choiceArea1.setLineWrap(true);
-      choiceArea1.setText("test");
+      choiceArea1.setText("Continue");
       choiceArea1.setFont(new Font("Serif",Font.PLAIN,16));
       choiceArea1.setForeground(Color.WHITE);
       choiceArea1.setEditable(false);
@@ -79,7 +83,7 @@ public class Window extends JFrame implements ActionListener{
       choiceArea2.setBounds(130, 36, 230, 20);
       choiceArea2.setBackground(Color.BLACK);
       choiceArea2.setLineWrap(true);
-      choiceArea2.setText("test");
+      choiceArea2.setText("");
       choiceArea2.setFont(new Font("Serif",Font.PLAIN,16));
       choiceArea2.setForeground(Color.WHITE);
       choiceArea2.setEditable(false);
@@ -88,7 +92,7 @@ public class Window extends JFrame implements ActionListener{
       choiceArea3.setBounds(130, 66, 230, 20);
       choiceArea3.setBackground(Color.BLACK);
       choiceArea3.setLineWrap(true);
-      choiceArea3.setText("test");
+      choiceArea3.setText("");
       choiceArea3.setFont(new Font("Serif",Font.PLAIN,16));
       choiceArea3.setForeground(Color.WHITE);
       choiceArea3.setEditable(false);
@@ -97,7 +101,7 @@ public class Window extends JFrame implements ActionListener{
       choiceArea4.setBounds(130, 96, 230, 20);
       choiceArea4.setBackground(Color.BLACK);
       choiceArea4.setLineWrap(true);
-      choiceArea4.setText("test");
+      choiceArea4.setText("");
       choiceArea4.setFont(new Font("Serif",Font.PLAIN,16));
       choiceArea4.setForeground(Color.WHITE);
       choiceArea4.setEditable(false);
@@ -222,22 +226,22 @@ public class Window extends JFrame implements ActionListener{
       choiceButton2.addActionListener(this);
       choiceButton2.setText("Select");
       choiceButton2.setFocusable(false);
+      choiceButton2.setVisible(false);
 
       choiceButton3 = new JButton();
       choiceButton3.setBounds(15, 65, 100, 25);
       choiceButton3.addActionListener(this);
       choiceButton3.setText("Select");
       choiceButton3.setFocusable(false);
+      choiceButton3.setVisible(false);
 
       choiceButton4 = new JButton();
       choiceButton4.setBounds(15, 95, 100, 25);
       choiceButton4.addActionListener(this);
       choiceButton4.setText("Select");
       choiceButton4.setFocusable(false);
+      choiceButton4.setVisible(false);
 
-
-      
-      
       //labels
       storyImageLabel1 =  new JLabel();
       storyImageLabel1.setBackground(Color.BLACK);
@@ -253,13 +257,6 @@ public class Window extends JFrame implements ActionListener{
       storyImageLabel2.setIcon(storyImage2);
       storyImageLabel2.setBorder(BorderFactory.createEtchedBorder());
       storyImageLabel2.setVisible(false);
-      
-      
-    
-      
-      
-      
-
      
       //frames
       frame = new JFrame();
@@ -297,24 +294,260 @@ public class Window extends JFrame implements ActionListener{
       frame.add(storyAreaImagePanel);
       frame.add(statsPanel);
       frame.add(equipPanel);
-      
       frame.setVisible(true);
-      
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==choiceButton1){
-            System.out.println("Test");
-            storyImageLabel1.setVisible(false);
-            storyImageLabel2.setVisible(true);
-            mainTextArea.setText("  If you are seeing this text then it worked!");
-            
+     @Override
+     public void actionPerformed(ActionEvent e) {
 
+       if(e.getSource()==choiceButton1){
+         mainTextArea.setText("test1");
+         Gate1++;
+
+         switch(Gate1){
+          case 1:
+          mainTextArea.setText("These words do seem to hail from \nall corners of the map and yet,\nthey spring forth from the ether with no\nfixed origin.");
+          System.out.println( Gate1 + "gate1");
+          break;
+  
+          case 2:
+          mainTextArea.setText("Thou shouldst find thy way out of yon forest and fetch aid. Which path wilt thou take?");
+          choiceButton2.setVisible(true);
+          choiceButton3.setVisible(true);
+          choiceButton4.setVisible(true);
+          choiceArea1.setText("NORTH");
+          choiceArea2.setText("SOUTH");
+          choiceArea3.setText("EAST");
+          choiceArea4.setText("WEST");
+          System.out.println( Gate1 + "gate1");
+          break;
+
+          case 3:
+          if(Gate2 == 1){
+          mainTextArea.setText("The mist doth weigh heavily in the air.\nThou spyest a faint light, akin to a campfire.\n Mayhap someone is yonder. Perchance they can divulge thy whereabouts.");
+          System.out.println( Gate1 + "gate1");
+          }else {
+            mainTextArea.setText("headed north");
+            System.out.println( Gate1 + "gate1");
+          }
+          break;
+
+          case 4:
+          mainTextArea.setText("Thou dost approach the light with caution, \nas though wary of what lieth beyond.\nAs thou drawest nearer, the dulcet tones of a woman's voice, weaving a melody through the air, doth grace thine ears, like the gentle whisper of a woodland sprite's song.");
+          choiceArea1.setText("Attend to the sound with greater care.");
+          choiceArea2.setText("Retrace thy steps whence thou came");
+          choiceArea3.setText("Seek to make thy presence known");
+          choiceArea4.setText("Press onward toward the light");
+          choiceButton2.setVisible(true);
+          choiceButton3.setVisible(true);
+          choiceButton4.setVisible(true);
+
+          System.out.println( Gate1 + "gate1");
+          break;
+
+          case 5:
+          mainTextArea.setText("Back at the starting point in the heart of\nthe forest, thou dost spy a peculiar sight:\na pair of trousers suspended from a nearby\n tree, a curious addition to the woodland\nscene that had eluded thy notice afore.");
+          choiceArea1.setText("Grab the pants.");
+          choiceArea2.setText("Leave the pants where they hang.");
+          choiceButton2.setVisible(true);
+          System.out.println( Gate1 + "gate1");
+          break;
+
+          case 6:
+          mainTextArea.setText("Switch 6 test");
+          System.out.println( Gate1 + "gate1");
+          break;
+
+          case 7:
+          mainTextArea.setText("Switch 7 test");
+          System.out.println( Gate1 + "gate1");
+          break;
+
+          case 8:
+          mainTextArea.setText("Switch 8 test");
+          System.out.println( Gate1 + "gate1");
+          break;
+        }
+
+       }
+      
+       //cbtn2
+
+       if(e.getSource()==choiceButton2){
+        mainTextArea.setText("er");
+        Gate2++;
+
+        switch(Gate2){
+         case 1:
+         mainTextArea.setText("As thou wandereth along, reckonin' thou art headin' southward, thou comest to a stark\n realization thou art completely in the buff\n And thou hast no inkling how thou hast\n come to this wood.");
+         choiceButton2.setVisible(false);
+         choiceButton3.setVisible(false);
+         choiceButton4.setVisible(false);
+         choiceArea1.setText("Continue");
+         choiceArea2.setText("");
+         choiceArea3.setText("");
+         choiceArea4.setText("");
+         System.out.println( Gate2 + "gate2");
+         
+         break;
+ 
+         case 2:
+         mainTextArea.setText("With uncertainty clouding thy path and the\n nature of thy surroundings unknown, thou\n optest to silently retreat northward,\n treading softly as a shadow in the night.");
+         choiceArea1.setText("Continue");
+         choiceArea2.setText("");
+         choiceArea3.setText("");
+         choiceArea4.setText("");
+         choiceButton2.setVisible(false);
+         choiceButton3.setVisible(false);
+         choiceButton4.setVisible(false);
+         System.out.println( Gate2 + "gate2");
+         
+         break;
+
+         case 3:
+         mainTextArea.setText("Switch 3 test");
+         System.out.println( Gate2 + "gate2");
+         break;
+
+         case 4:
+         mainTextArea.setText("Switch 4 test");
+         System.out.println( Gate2 + "gate2");
+         break;
+
+         case 5:
+         mainTextArea.setText("Switch 5 test");
+         System.out.println( Gate2 + "gate2");
+         break;
+
+         case 6:
+         mainTextArea.setText("Switch 6 test");
+         System.out.println( Gate2 + "gate2");
+         break;
+
+         case 7:
+         mainTextArea.setText("Switch 7 test");
+         System.out.println( Gate2 + "gate2");
+         break;
+
+         case 8:
+         mainTextArea.setText("Switch 8 test");
+         System.out.println( Gate2 + "gate2");
+         break;
+       }
+
+     }
+       //cbtn2 end
+       //cbtn3
+       if(e.getSource()==choiceButton3){
+        mainTextArea.setText("3 working");
+        Gate3++;
+       switch(Gate3){
+        case 1:
+        mainTextArea.setText("switch 3 working");
+        break;
+
+        case 2:
+
+        break;
+
+        case 3:
+
+        break;
+
+        case 4:
+
+        break;
+
+        case 5:
+
+        break;
+
+        case 6:
+
+        break;
+
+        case 7:
+
+        break;
+
+        case 8:
+
+        break;
+
+        case 9:
+
+        break;
+
+        case 10:
+
+        break;
+       }
+       }
+       //cbtb3 end
+       //cbtn4
+       if(e.getSource()==choiceButton4){
+        mainTextArea.setText("4 working");
+        Gate4++;
+        switch(Gate4){
+          case 1:
+          mainTextArea.setText("Gate 4 switch working");
+          break;
+
+          case 2:
+
+          break;
+
+          case 3:
+
+          break;
+
+          case 4:
+
+          break;
+
+          case 5:
+
+          break;
+
+          case 6:
+
+          break;
+
+          case 7:
+
+          break;
+
+          case 8:
+
+          break;
+
+          case 9:
+
+          break;
+
+          case 10:
+
+          break;
+        }
+       }
+      }
+    }
+      
+     
+
+
+     
+    
+
+
+
+
+           
+           
             
         
-    }
-
     
-}
-}
+  
+    
+
+ 
