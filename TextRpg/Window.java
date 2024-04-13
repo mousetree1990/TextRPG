@@ -11,7 +11,6 @@
  import java.awt.Font;
  import java.awt.event.*;
 
-
  public class Window extends JFrame implements ActionListener{
     
  int Gate1 = 0;
@@ -21,227 +20,180 @@
 
    gameLogic logic;
    JFrame frame;
+   JButton[] cButtons = new JButton[4];
    JButton choiceButton1, choiceButton2, choiceButton3, choiceButton4;
+   
    ImageIcon storyImage1, storyImage2;
    JLabel storyImageLabel1, storyImageLabel2;
+
+   JPanel[] panels = new JPanel[5];
    JPanel storyPanel, storyChoicePanel, storyAreaImagePanel, statsPanel, equipPanel;
+   
+   JTextArea[] textAreas = new JTextArea[17];
    JTextArea mainTextArea, choiceArea1, choiceArea2, choiceArea3, choiceArea4, atkStat, defStat, hpStat, goldStat;
    JTextArea helmetTextArea, weaponTextArea, chestTextArea, legsTextArea, cloakTextArea, bootsTextArea, glovesTextArea , amuletTextArea;
     
  public Window(){
 
      logic = new gameLogic();
-      
+     
       //panels
       storyPanel = new JPanel();
       storyPanel.setBounds(20, 20, 370, 250);
-      storyPanel.setBackground(Color.BLACK);
-      storyPanel.setLayout(null);
-
+     
       storyChoicePanel = new JPanel();
-      storyChoicePanel.setLayout(null);
-      storyChoicePanel.setBounds(20, 275, 370, 130);
-      storyChoicePanel.setBackground(Color.BLACK);
+      storyChoicePanel.setBounds(20, 275, 420, 130);
       
       storyAreaImagePanel = new JPanel();
       storyAreaImagePanel.setBounds(400, 20, 370, 250);
-      storyAreaImagePanel.setBackground(Color.BLACK);
-      storyAreaImagePanel.setLayout(null);
       storyAreaImagePanel.setBorder(BorderFactory.createEtchedBorder());
 
       statsPanel = new JPanel();
       statsPanel.setBounds(430, 710, 370, 30);
-      statsPanel.setBackground(Color.BLACK);
-      statsPanel.setLayout(null);
-
+     
       equipPanel = new JPanel();
       equipPanel.setBounds(10, 500, 160, 245);
-      equipPanel.setBackground(Color.BLACK);
-      equipPanel.setLayout(null);
+
+      panels[0] = storyPanel;
+      panels[1] = storyChoicePanel;
+      panels[2] = storyAreaImagePanel;
+      panels[3] = statsPanel;
+      panels[4] = equipPanel;
+
+      for(int i = 0; i < 5; i++){
+        panels[i].setBackground(Color.BLACK);
+        panels[i].setLayout(null);
+      }
 
       //text area
       mainTextArea = new JTextArea();
       mainTextArea.setBounds(10, 10, 350, 230);
-      mainTextArea.setBackground(Color.BLACK);
-      mainTextArea.setLineWrap(true);
       mainTextArea.setText("Belmare!\nWoe to the coward!\n Woe to the thief!\n Woe to the lying varlet underneath!");
-      
-      mainTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      mainTextArea.setForeground(Color.WHITE);
-      mainTextArea.setEditable(false);
 
       choiceArea1 = new JTextArea();
-      choiceArea1.setBounds(130, 6, 230, 20);
-      choiceArea1.setBackground(Color.BLACK);
-      choiceArea1.setLineWrap(true);
+      choiceArea1.setBounds(130, 6, 320, 30);
       choiceArea1.setText("Continue");
-      choiceArea1.setFont(new Font("Serif",Font.PLAIN,16));
-      choiceArea1.setForeground(Color.WHITE);
-      choiceArea1.setEditable(false);
 
       choiceArea2 = new JTextArea();
-      choiceArea2.setBounds(130, 36, 230, 20);
-      choiceArea2.setBackground(Color.BLACK);
-      choiceArea2.setLineWrap(true);
+      choiceArea2.setBounds(130, 36, 320, 30);
       choiceArea2.setText("");
-      choiceArea2.setFont(new Font("Serif",Font.PLAIN,16));
-      choiceArea2.setForeground(Color.WHITE);
-      choiceArea2.setEditable(false);
 
       choiceArea3 = new JTextArea();
-      choiceArea3.setBounds(130, 66, 230, 20);
-      choiceArea3.setBackground(Color.BLACK);
-      choiceArea3.setLineWrap(true);
+      choiceArea3.setBounds(130, 66, 320, 30);
       choiceArea3.setText("");
-      choiceArea3.setFont(new Font("Serif",Font.PLAIN,16));
-      choiceArea3.setForeground(Color.WHITE);
-      choiceArea3.setEditable(false);
 
       choiceArea4 = new JTextArea();
-      choiceArea4.setBounds(130, 96, 230, 20);
-      choiceArea4.setBackground(Color.BLACK);
-      choiceArea4.setLineWrap(true);
+      choiceArea4.setBounds(130, 96, 320, 30);
       choiceArea4.setText("");
-      choiceArea4.setFont(new Font("Serif",Font.PLAIN,16));
-      choiceArea4.setForeground(Color.WHITE);
-      choiceArea4.setEditable(false);
+     
 
       atkStat = new JTextArea();
       atkStat.setBounds(25, 0, 70, 25);
-      atkStat.setBackground(Color.BLACK);
-      atkStat.setLineWrap(true);
       atkStat.setText("ATK:");
-      atkStat.setFont(new Font("Serif",Font.PLAIN,20));
-      atkStat.setForeground(Color.WHITE);
-      atkStat.setEditable(false);
 
       defStat = new JTextArea();
       defStat.setBounds(105, 0, 70, 25);
-      defStat.setBackground(Color.BLACK);
-      defStat.setLineWrap(true);
       defStat.setText("DEF:");
-      defStat.setFont(new Font("Serif",Font.PLAIN,20));
-      defStat.setForeground(Color.WHITE);
-      defStat.setEditable(false);
-
+      
       hpStat = new JTextArea();
       hpStat.setBounds(185, 0, 70, 25);
-      hpStat.setBackground(Color.BLACK);
-      hpStat.setLineWrap(true);
       hpStat.setText("HP:");
-      hpStat.setFont(new Font("Serif",Font.PLAIN,20));
-      hpStat.setForeground(Color.WHITE);
-      hpStat.setEditable(false);
 
       goldStat = new JTextArea();
       goldStat.setBounds(265, 0, 70, 25);
-      goldStat.setBackground(Color.BLACK);
-      goldStat.setLineWrap(true);
       goldStat.setText("Gold:");
-      goldStat.setFont(new Font("Serif",Font.PLAIN,20));
-      goldStat.setForeground(Color.WHITE);
-      goldStat.setEditable(false);
 
       helmetTextArea = new JTextArea();
       helmetTextArea.setBounds(5, 0, 150, 25);
-      helmetTextArea.setBackground(Color.BLACK);
-      helmetTextArea.setLineWrap(true);
       helmetTextArea.setText("Helmet:");
-      helmetTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      helmetTextArea.setForeground(Color.WHITE);
-      helmetTextArea.setEditable(false);
       
       chestTextArea = new JTextArea();
       chestTextArea.setBounds(5, 30, 150, 25);
-      chestTextArea.setBackground(Color.BLACK);
-      chestTextArea.setLineWrap(true);
       chestTextArea.setText("Chest:");
-      chestTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      chestTextArea.setForeground(Color.WHITE);
-      chestTextArea.setEditable(false);
 
       legsTextArea = new JTextArea();
       legsTextArea.setBounds(5, 60, 150, 25);
-      legsTextArea.setBackground(Color.BLACK);
-      legsTextArea.setLineWrap(true);
       legsTextArea.setText("Legs:");
-      legsTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      legsTextArea.setForeground(Color.WHITE);
-      legsTextArea.setEditable(false);
 
       bootsTextArea = new JTextArea();
       bootsTextArea.setBounds(5, 90, 150, 25);
-      bootsTextArea.setBackground(Color.BLACK);
-      bootsTextArea.setLineWrap(true);
       bootsTextArea.setText("Boots:");
-      bootsTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      bootsTextArea.setForeground(Color.WHITE);
-      bootsTextArea.setEditable(false);
 
       glovesTextArea = new JTextArea();
       glovesTextArea.setBounds(5, 120, 150, 25);
-      glovesTextArea.setBackground(Color.BLACK);
-      glovesTextArea.setLineWrap(true);
       glovesTextArea.setText("Gloves:");
-      glovesTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      glovesTextArea.setForeground(Color.WHITE);
-      glovesTextArea.setEditable(false);
 
       cloakTextArea = new JTextArea();
       cloakTextArea.setBounds(5, 150, 150, 25);
-      cloakTextArea.setBackground(Color.BLACK);
-      cloakTextArea.setLineWrap(true);
       cloakTextArea.setText("Cloak:");
-      cloakTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      cloakTextArea.setForeground(Color.WHITE);
-      cloakTextArea.setEditable(false);
-
+     
       amuletTextArea = new JTextArea();
       amuletTextArea.setBounds(5, 180, 150, 25);
-      amuletTextArea.setBackground(Color.BLACK);
-      amuletTextArea.setLineWrap(true);
       amuletTextArea.setText("Amulet:");
-      amuletTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      amuletTextArea.setForeground(Color.WHITE);
-      amuletTextArea.setEditable(false);
-
+      
       weaponTextArea = new JTextArea();
       weaponTextArea.setBounds(5, 210, 150, 25);
-      weaponTextArea.setBackground(Color.BLACK);
-      weaponTextArea.setLineWrap(true);
       weaponTextArea.setText("Weapon:");
-      weaponTextArea.setFont(new Font("Serif",Font.PLAIN,20));
-      weaponTextArea.setForeground(Color.WHITE);
-      weaponTextArea.setEditable(false);
+     
+
+      textAreas[0] = mainTextArea;
+      textAreas[1] = choiceArea1;
+      textAreas[2] = choiceArea2;
+      textAreas[3] = choiceArea3;
+      textAreas[4] = choiceArea4;
+      textAreas[5] = atkStat;
+      textAreas[6] = defStat;
+      textAreas[7] = hpStat;
+      textAreas[8] = goldStat;
+      textAreas[9] = helmetTextArea;
+      textAreas[10] = chestTextArea;
+      textAreas[11] = legsTextArea;
+      textAreas[12] = bootsTextArea;
+      textAreas[13] = glovesTextArea;
+      textAreas[14] = cloakTextArea;
+      textAreas[15] = amuletTextArea;
+      textAreas[16] = weaponTextArea;
+
+      for(int i = 0; i < 17; i++){
+        textAreas[i].setBackground(Color.BLACK);
+        textAreas[i].setForeground(Color.white);
+        textAreas[i].setEditable(false);
+        textAreas[i].setFont(new Font("Serif",Font.PLAIN,20));
+        textAreas[i].setLineWrap(true);
+        
+      }
       
       //Buttons
+     
+
       choiceButton1 = new JButton();
       choiceButton1.setBounds(15, 5, 100, 25);
-      choiceButton1.addActionListener(this);
-      choiceButton1.setText("Select");
-      choiceButton1.setFocusable(false);
-
+      
       choiceButton2 = new JButton();
       choiceButton2.setBounds(15, 35, 100, 25);
-      choiceButton2.addActionListener(this);
-      choiceButton2.setText("Select");
-      choiceButton2.setFocusable(false);
       choiceButton2.setVisible(false);
 
       choiceButton3 = new JButton();
       choiceButton3.setBounds(15, 65, 100, 25);
-      choiceButton3.addActionListener(this);
-      choiceButton3.setText("Select");
-      choiceButton3.setFocusable(false);
       choiceButton3.setVisible(false);
 
       choiceButton4 = new JButton();
       choiceButton4.setBounds(15, 95, 100, 25);
-      choiceButton4.addActionListener(this);
-      choiceButton4.setText("Select");
-      choiceButton4.setFocusable(false);
       choiceButton4.setVisible(false);
 
+      cButtons[0] = choiceButton1;
+      cButtons[1] = choiceButton2;
+      cButtons[2] = choiceButton3;
+      cButtons[3] = choiceButton4;
+       
+      for(int i = 0; i < 4; i++){
+        cButtons[i].addActionListener(this);
+        cButtons[i].setFocusable(false);
+        cButtons[i].setText("Select");
+        cButtons[i].setFont(new Font("Serif",Font.PLAIN,20));
+      }
+
+     
       //labels
       storyImageLabel1 =  new JLabel();
       storyImageLabel1.setBackground(Color.BLACK);
